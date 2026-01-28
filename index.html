@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>K.G.N. Bakery | Premium Village Taste</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary: #f5c542;       /* Gold */
+            --primary-hover: #ffdb73; /* Light Gold */
+            --dark-bg: #121212;       /* Deep Black */
+            --card-bg: #1e1e1e;       /* Dark Grey */
+            --text-light: #f4f4f4;
+            --text-grey: #a0a0a0;
+            --whatsapp: #25D366;      /* WhatsApp Green */
+            --transition: all 0.3s ease;
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(245, 197, 66, 0.2);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            /* Background Image set to PAV (Local File) */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
+                        url('pav.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 30px;
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 12px 30px;
+            background: var(--primary);
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 0 15px rgba(245, 197, 66, 0.4);
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(245, 197, 66, 0.6);
+        }
+
+        /* --- SECTIONS --- */
+        section { padding: 60px 5%; }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--text-light);
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* --- PRODUCT CARDS --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid #333;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(245, 197, 66, 0.15);
+        }
+
+        /* ADDED: Image Styling */
+        .card-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .card-content { padding: 20px; }
+        
+        .card h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-grey);
+            font-size: 0.95rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #333;
+            margin-top: 50px;
+        }
+        
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+            transition: var(--transition);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover { transform: scale(1.1); }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* Animation Keyframes */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } 
+            .whatsapp-float { width: 50px; height: 50px; font-size: 24px; bottom: 20px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">K.G.N. BAKERY</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>Taste of Village</h1>
+        <p>Garama-garam Pav, Crispy Toast, aur Asli Desi Swad.</p>
+        <a href="https://wa.me/919604060705?text=Hello%20Sameer%20Bhai,%20mujhe%20bakery%20se%20kuch%20order%20karna%20hai." target="_blank" class="btn">📞 Order Now</a>
+    </section>
+
+    <section id="menu">
+        <h2 class="section-title">Our Special Menu</h2>
+        <div class="products-grid">
+            
+            <div class="card">
+                <img src="pav.jpg" class="card-img" alt="Vada Pav Buns">
+                <div class="card-content">
+                    <h3>Vada Pav Buns</h3>
+                    <p>Soft aur fresh buns, jo muh mein ghul jayein. Vada Pav walo ki pehli pasand.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="specialbun.jpg" class="card-img" alt="Butter Pav">
+                <div class="card-content">
+                    <h3>Butter Pav</h3>
+                    <p>Amul butter jaisi soft quality. Chhota aur bada size available.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="toast.jpg" class="card-img" alt="Crispy Toast">
+                <div class="card-content">
+                    <h3>Crispy Toast</h3>
+                    <p>Chai ke bina adhura, humara special double-baked toast.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="nankhatai.jpg" class="card-img" alt="Desi Nankhatai">
+                <div class="card-content">
+                    <h3>Desi Nankhatai</h3>
+                    <p>Pure ghee aur pyaar se bani hui traditional biscuits.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="creamroll.jpg" class="card-img" alt="Cream Rolls">
+                <div class="card-content">
+                    <h3>Cream Rolls</h3>
+                    <p>Bachpan ki yaadein taaza karne wala sweet treat.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="khari.jpg" class="card-img" alt="Khari Biscuit">
+                <div class="card-content">
+                    <h3>Khari Biscuit</h3>
+                    <p>Itni crispy ki haath lagate hi toot jaye. Best seller!</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="coconutbun.jpg" class="card-img" alt="Coconut Bun">
+                <div class="card-content">
+                    <h3>Special Coconut Bun</h3>
+                    <p>Soft bun filled with sweet cream and topped with fresh coconut flakes.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">Humari Kahani</h2>
+        <div class="about-container" style="text-align: center;">
+            <p style="font-size: 1.1rem; color: #ddd;">
+                <strong>K.G.N. Bakery</strong> sirf ek dukan nahi, humare gao ka swad hai. Hum <span style="color:var(--primary)">Sameer Ali</span> ki dekh-rekh mein rozana fresh products banate hain.
+                <br><br>
+                Humara maqsad simple hai: <strong>"Quality aisi ki log sheher se gao aayein khane."</strong> Hum modern techniques use karte hain par swad wahi purana rakhte hain.
+            </p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Visit Us</h2>
+        <div style="text-align: center;">
+            <p style="font-size: 1.5rem; margin-bottom: 20px;">Owner: <strong style="color:var(--primary)">Sameer Ali</strong></p>
+            
+            <a href="tel:+919604060705" class="btn">📞 +91 96040 60705</a>
+            <br><br>
+            <a href="https://www.instagram.com/shamim.likeu786" target="_blank" style="color:#E1306C; text-decoration:none; font-size:1.1rem; border:1px solid #E1306C; padding:10px 20px; border-radius:5px; display:inline-block; margin-bottom:15px;">
+                Follow on Instagram 📸
+            </a>
+            <br>
+            <a href="https://maps.google.com/?q=KGN+Bakery" target="_blank" class="btn" style="background:transparent; border:1px solid var(--primary); color:var(--primary);">📍 View on Google Maps</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 K.G.N. Bakery | Designed by <span style="color:var(--primary)">Sohel Ali (The Engineer)</span></p>
+    </footer>
+
+    <a href="https://wa.me/919604060705?text=Hello%20Sameer%20Bhai,%20I%20want%20to%20order%20something." class="whatsapp-float" target="_blank">
+        💬
+    </a>
+
+</body>
+</html>
